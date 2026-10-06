@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-motion="full" data-fx="full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>Rat Race — escape with passive income</title>
+  <meta name="description" content="A financial-literacy strategy game. Build passive income, manage risk, and escape the Rat Race.">
+  <meta name="theme-color" content="#070b14">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css?v=1.0.0">
+  <link rel="stylesheet" href="css/base.css?v=1.0.0">
+  <link rel="stylesheet" href="css/glass.css?v=1.0.0">
+  <link rel="stylesheet" href="css/ledger.css?v=1.0.0">
+  <link rel="stylesheet" href="css/modes.css?v=1.0.0">
+</head>
+<body data-mode="RAT_RACE">
+  <noscript><p class="noscript">Rat Race needs JavaScript. Please enable it and reload.</p></noscript>
+  <div id="boot-error" role="alert" hidden></div>
+
+  <div id="viewport">
+    <div id="stage">
+      <div id="app">
+        <header id="hud"></header>
+        <aside id="col-left" class="col col-left"></aside>
+        <main id="col-center" class="col col-center"></main>
+        <aside id="col-right" class="col col-right"></aside>
+        <footer id="action-bar"></footer>
+        <aside id="contacts-drawer"></aside>
+      </div>
+      <div id="screens" hidden></div>
+      <div id="overlay-root">
+        <div id="toast-root" class="toast-root" role="region" aria-label="Notifications" aria-live="polite"></div>
+        <div id="modal-root"></div>
+      </div>
+      <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+      <div id="fx-root" aria-hidden="true"></div>
+      <div id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+      <!-- keyed-list row templates (bound by RR.ui.binder; classes are the hooks, text is set with textContent) -->
+      <template id="tpl-debt-row"><div class="item-row item-row--2"><span class="lbl"></span><b class="val"></b><span class="chip chip--apr"></span></div></template>
+      <template id="tpl-liability-row"><div class="item-row"><span class="lbl"></span><b class="val"></b><span class="chip chip--apr"></span><span class="sub"></span></div></template>
+      <template id="tpl-deposit-row"><div class="item-row item-row--2"><span class="lbl"></span><b class="val"></b><span class="chip chip--apy"></span></div></template>
+      <template id="tpl-asset-row"><div class="item-row item-row--2"><span class="lbl"></span><b class="val"></b><span class="sub"></span></div></template>
+      <template id="tpl-ticker-line"><span class="ticker__line"><span class="t"></span><span class="x"></span><b class="d"></b></span></template>
+      <template id="tpl-npc-card">
+        <div class="npc-card">
+          <div class="npc-card__avatar"></div>
+          <div>
+            <div class="npc-card__top"><span class="npc-card__name"></span><span class="chip chip--accent npc-role"></span></div>
+            <p class="npc-card__bio"></p>
+            <div class="npc-card__rel">
+              <div class="meter meter--tier meter--accent" role="meter" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0"><span class="meter__fill"></span></div>
+              <span class="chip npc-tier"></span>
+            </div>
+          </div>
+          <div class="npc-card__actions">
+            <button type="button" class="btn btn--sm" data-action="npc.call" aria-disabled="true" title="Arrives in Phase 2">Call</button>
+            <button type="button" class="btn btn--sm" data-action="npc.lunch" aria-disabled="true" title="Arrives in Phase 2">Lunch</button>
+            <button type="button" class="btn btn--sm" data-action="npc.gift" aria-disabled="true" title="Arrives in Phase 2">Gift</button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <div id="small-notice" hidden role="alert">
+    <svg class="ic" viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM11 18h2"/></svg>
+    <h2>Please use a larger screen</h2>
+    <p>Rat Race is designed for a wide display. Rotate your device or enlarge this window to at least 900 pixels wide.</p>
+  </div>
+
+  <script src="config/env.js?v=1.0.0"></script>
+  <script src="js/00-namespace.js?v=1.0.0"></script>
+  <script src="js/01-config.js?v=1.0.0"></script>
+  <script src="js/02-util.js?v=1.0.0"></script>
+  <script src="js/03-bus.js?v=1.0.0"></script>
+  <script src="js/04-rng.js?v=1.0.0"></script>
+  <script src="js/05-data-dreams.js?v=1.0.0"></script>
+  <script src="js/05-data-glossary.js?v=1.0.0"></script>
+  <script src="js/05-data-icons.js?v=1.0.0"></script>
+  <script src="js/05-data-npcs.js?v=1.0.0"></script>
+  <script src="js/05-data-professions.js?v=1.0.0"></script>
+  <script src="js/05-data-scenes.js?v=1.0.0"></script>
+  <script src="js/05-data-stocks.js?v=1.0.0"></script>
+  <script src="js/06-schema.js?v=1.0.0"></script>
+  <script src="js/07-store.js?v=1.0.0"></script>
+  <script src="js/08-finance.js?v=1.0.0"></script>
+  <script src="js/09-valuation.js?v=1.0.0"></script>
+  <script src="js/10-ledger.js?v=1.0.0"></script>
+  <script src="js/11-save.js?v=1.0.0"></script>
+  <script src="js/12-ui-stage.js?v=1.0.0"></script>
+  <script src="js/13-ui-binder.js?v=1.0.0"></script>
+  <script src="js/14-ui-fx.js?v=1.0.0"></script>
+  <script src="js/15-ui-overlays.js?v=1.0.0"></script>
+  <script src="js/16-ui-panels.js?v=1.0.0"></script>
+  <script src="js/17-ui-screens.js?v=1.0.0"></script>
+  <script src="js/18-dev.js?v=1.0.0"></script>
+  <script src="js/19-ui-art.js?v=1.0.0"></script>
+  <script src="js/1a-persist.js?v=1.0.0"></script>
+  <script src="js/1b-stubs.js?v=1.0.0"></script>
+  <script src="js/90-app.js?v=1.0.0"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+/* RAT RACE · modes.css · body[data-mode] VARIABLE SWAPS ONLY — no layout change (§1.3).
+   Fast Track: warm near-black, gold accent, pale-gold passive. The 600 ms theme transition is colour-only (F.6). */
+body[data-mode="FAST_TRACK"] {
+  --bg-0: #0b0906;
+  --bg-1: #1a1407;
+  --accent: #f5c451;
+  --accent-ink: #1a1407;
+  --passive: #fde68a;
+  --glass-border: rgba(245, 196, 81, .25);
+  --glass-hi: inset 0 1px 0 rgba(245, 196, 81, .12);
+  --mesh-a: rgba(245, 196, 81, .08);
+  --mesh-b: rgba(253, 230, 138, .04);
+  --mesh-c: rgba(251, 146, 60, .04);
+}
+
+body {
+  transition: background-color 600ms ease, color 600ms ease;
+}
+html[data-motion="reduced"] body { transition: none; }

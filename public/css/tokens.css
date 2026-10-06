@@ -1,0 +1,88 @@
+/* RAT RACE · tokens.css · design tokens (§1.3 + §2.8.5). Variables only — no selectors that style elements.
+   Defaults below are the RAT_RACE theme; modes.css swaps variables for FAST_TRACK. Dark mode only (v1).
+   DEVIATIONS (see Phase2HandOver.md §Deviations): --text-lo #9aa7c6 (plan #6f7c9c), and --neg/--accent/--npc/--cat-life/--cat-market/--cat-quiet lightened by ≤ 12% — all so small text passes WCAG AA so small secondary text passes WCAG AA (4.5:1) on glass — see dev/tests/p1-ui-kit.js "contrast". */
+:root,
+body[data-mode="RAT_RACE"] {
+  /* surfaces */
+  --bg-0: #070b14;
+  --bg-1: #0d1424;
+  --glass-bg: rgba(255, 255, 255, .06);
+  --glass-bg-strong: rgba(255, 255, 255, .09);
+  --glass-border: rgba(255, 255, 255, .14);
+  --glass-blur: 18px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, .45);
+  --glass-hi: inset 0 1px 0 rgba(255, 255, 255, .08);
+  --scrim: rgba(4, 7, 14, .62);
+
+  /* text */
+  --text-hi: #eef3ff;
+  --text-md: #aab6d3;
+  --text-lo: #9aa7c6;
+
+  /* semantic colour (never reuse for other meanings): positive emerald · negative rose · passive cyan · caution amber · accent periwinkle */
+  --pos: #34d399;
+  --neg: #ff8296;
+  --passive: #22d3ee;
+  --warn: #fbbf24;
+  --accent: #8aa8ff;
+  --accent-ink: #0a1020;           /* text on solid accent buttons */
+
+  /* v2 additions */
+  --health: #a3e635;
+  --npc: #f784c0;
+  --asset: #fb923c;
+  --premium: #e879f9;
+  --gold: #f5c451;
+
+  /* event categories — ALWAYS paired with an icon or label (R11) */
+  --cat-deal: #22d3ee;
+  --cat-doodad: #fbbf24;
+  --cat-life: #b8a2ff;
+  --cat-market: #6eb0fc;
+  --cat-quiet: #a2b0c4;
+  --cat-npc: var(--npc);
+  --cat-asset: var(--asset);
+
+  /* radii */
+  --r-lg: 20px;
+  --r-md: 14px;
+  --r-sm: 10px;
+  --r-pill: 999px;
+
+  /* type scale (px on the 1920×1080 canvas) */
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 20px;
+  --fs-xl: 28px;
+  --fs-hero: 56px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* spacing & layout */
+  --pad: 32px;
+  --gap: 24px;
+  --hud-h: 96px;
+  --bar-h: 96px;
+
+  /* motion (150–300 ms; zeroed by [data-motion="reduced"]) */
+  --t-fast: 150ms;
+  --t-med: 200ms;
+  --t-slow: 300ms;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+
+  /* z-index scale */
+  --z-drawer: 20;
+  --z-modal: 60;
+  --z-toast: 80;
+  --z-tooltip: 90;
+  --z-dev: 95;
+
+  /* mesh background (used by body in base.css) */
+  --well: rgba(6, 10, 20, .5);               /* dark inset surface for hero numbers: keeps text contrast independent of the glass stack */
+  --mesh-a: rgba(124, 156, 255, .08);
+  --mesh-b: rgba(34, 211, 238, .05);
+  --mesh-c: rgba(167, 139, 250, .04);
+
+  color-scheme: dark;
+}

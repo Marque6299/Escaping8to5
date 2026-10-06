@@ -1,0 +1,80 @@
+/* RAT RACE · base.css · reset, typography, focus ring, utilities, stage frame, reduced-motion (R11, §1.3). */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  color: var(--text-hi);
+  font: 400 var(--fs-md)/1.4 var(--font);
+  background:
+    radial-gradient(1100px 700px at 12% 8%, var(--mesh-a), transparent 60%),
+    radial-gradient(900px 640px at 92% 92%, var(--mesh-b), transparent 60%),
+    radial-gradient(700px 500px at 80% 12%, var(--mesh-c), transparent 60%),
+    linear-gradient(165deg, var(--bg-1), var(--bg-0));
+  background-color: var(--bg-0);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+[hidden] { display: none !important; }
+h1, h2, h3, h4, p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--text-hi); }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+button:disabled, [aria-disabled="true"] { cursor: not-allowed; }
+b, strong { font-weight: 650; }
+small { font-size: var(--fs-sm); }
+
+/* money & all numerals line up */
+[data-fmt], .num, .val, .hero-num, .chip { font-variant-numeric: tabular-nums; }
+
+/* focus ring — visible on every glass surface (WCAG 2.4.7); keyboard only */
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.btn:focus-visible, .tab:focus-visible, .choice:focus-within { outline-offset: 3px; }
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* icons: one rule re-tints every symbol (F.2) */
+.ic { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; vertical-align: -0.14em; }
+.ic-sprite { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
+
+/* thin, quiet scrollbars */
+* { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .22) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .2); border-radius: 8px; }
+
+/* ── stage frame (12-ui-stage.js sets left/top/transform) ── */
+#viewport { position: fixed; inset: 0; overflow: hidden; }
+#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; }
+#app { position: absolute; inset: 0; }
+#screens { position: absolute; inset: 0; z-index: 40; }
+#overlay-root { position: absolute; inset: 0; pointer-events: none; z-index: var(--z-modal); }
+#overlay-root > * { pointer-events: auto; }
+#fx-root { position: absolute; inset: 0; pointer-events: none; z-index: 70; overflow: hidden; }
+
+#small-notice {
+  position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 32px; text-align: center; background: var(--bg-0); color: var(--text-hi);
+}
+#small-notice .ic { font-size: 44px; color: var(--accent); }
+#small-notice h2 { font-size: 22px; }
+#small-notice p { max-width: 36ch; color: var(--text-md); }
+
+/* ── reduced motion: attribute (settings) OR OS preference. Motion becomes instant; flashes become an outline (F.6). ── */
+html[data-motion="reduced"] *, html[data-motion="reduced"] *::before, html[data-motion="reduced"] *::after {
+  animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important; transition-delay: 0s !important; scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; transition-delay: 0s !important; scroll-behavior: auto !important;
+  }
+}
+
+.noscript { padding: 24px; color: var(--text-hi); }
+#boot-error { position: fixed; left: 0; right: 0; top: 0; z-index: 300; padding: 14px 20px; background: #3a1620; color: #ffd9df; border-bottom: 2px solid var(--neg); font-weight: 600; }

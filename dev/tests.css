@@ -1,0 +1,17 @@
+/* dev/tests.css — styling for the test page only (not shipped to players). */
+html, body { height: auto; overflow: auto; }
+body { padding: 24px 32px 80px; font: 15px/1.5 system-ui, sans-serif; background: #0b1020; color: #e8eefc; }
+h1 { margin: 0 0 4px; font-size: 22px; }
+#summary { margin: 8px 0 20px; padding: 10px 14px; border-radius: 10px; font-weight: 700; background: #1b2440; }
+#summary.pass { background: #0f3d2e; color: #7df0c0; }
+#summary.fail { background: #4a1623; color: #ffb3c0; }
+#results { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+#results li { padding: 8px 12px; border-radius: 8px; background: #141b30; border-left: 5px solid #556; }
+#results li.pass { border-left-color: #34d399; }
+#results li.fail { border-left-color: #fb7185; background: #2a1520; }
+#results li b { display: inline-block; min-width: 34px; color: #9fb0d8; }
+#results li .err { display: block; margin-top: 4px; color: #ffb3c0; font: 13px/1.4 ui-monospace, Menlo, monospace; white-space: pre-wrap; }
+#results li small { color: #7c89ad; margin-left: 8px; }
+/* the app markup lives off-screen so UI tests have real DOM, layout and focus without covering the results */
+#sandbox { position: absolute; left: -99999px; top: 0; width: 1920px; height: 1080px; }
+iframe#boot-frame { position: absolute; left: -99999px; top: 0; width: 1280px; height: 720px; border: 0; }
