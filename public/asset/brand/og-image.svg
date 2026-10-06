@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Rat Race — escape with passive income">
+  <!-- PLACEHOLDER social card. tools/build-brand.mjs (Phase 7) rasterises this to og-image.png (1200×630). -->
+  <rect width="1200" height="630" fill="#070b14"/>
+  <circle cx="240" cy="120" r="360" fill="#7c9cff" opacity=".12"/>
+  <circle cx="1020" cy="560" r="320" fill="#22d3ee" opacity=".09"/>
+  <g transform="translate(300 150) scale(2.4)">
+    <circle cx="68" cy="82" r="52" fill="none" stroke="#7c9cff" stroke-opacity=".55" stroke-width="6" stroke-dasharray="3 10" stroke-linecap="round"/>
+    <path d="M104 122V84a15 15 0 0 1 30 0v38z" fill="#f5c451"/>
+    <ellipse cx="62" cy="100" rx="20" ry="11" fill="#eef3ff"/><circle cx="83" cy="94" r="8.5" fill="#eef3ff"/><circle cx="80" cy="85.5" r="4.2" fill="#eef3ff"/>
+    <g font-family="system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif" font-weight="800" letter-spacing="2">
+      <text x="164" y="80" font-size="64" fill="#eef3ff">RAT</text><text x="164" y="138" font-size="64" fill="#f5c451">RACE</text>
+    </g>
+  </g>
+  <text x="600" y="560" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="34" fill="#aab6d3">Build passive income. Escape the rat race.</text>
+</svg>
